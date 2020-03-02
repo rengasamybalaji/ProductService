@@ -28,6 +28,7 @@ Maven 4.0.0
 
 ```
 Clone the Repository or download the zip folder from GITHub. 
+https://github.com/rengasamybalaji/ProductService
 ```
 
 ## Execute Test Cases
