@@ -1,0 +1,13 @@
+target
+.idea
+*.iml
+*.log
+.DS_Store
+new_version.txt
+.swp
+.classpath
+.factorypath
+.project
+.settings/
+mqjms.*
+log/
