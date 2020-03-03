@@ -42,7 +42,7 @@ class ProductServiceITSpec extends Specification {
 
   def 'fetch product successfully'() {
     when:
-    ResponseEntity<Product> responseEntity = this.restTemplate.exchange("http://localhost:$port/v1/product/13860428", HttpMethod.GET,
+    ResponseEntity<Product> responseEntity = this.restTemplate.exchange("http://localhost:$port/v1/products/13860428", HttpMethod.GET,
       getRequestEntity(null), Product.class)
 
     then:
@@ -53,7 +53,7 @@ class ProductServiceITSpec extends Specification {
 
   def 'fetch invalid product'() {
     when:
-    ResponseEntity<Map> responseEntity = this.restTemplate.exchange("http://localhost:$port/v1/product/123", HttpMethod.GET,
+    ResponseEntity<Map> responseEntity = this.restTemplate.exchange("http://localhost:$port/v1/products/123", HttpMethod.GET,
       getRequestEntity(null), Map.class)
 
     then:
@@ -66,7 +66,7 @@ class ProductServiceITSpec extends Specification {
       new Product.Price(value: 2000.99, currencyCode: Currency.getInstance(Locale.getDefault()).getCurrencyCode()))
 
     when:
-    ResponseEntity<Map> result = this.restTemplate.exchange("http://localhost:$port/v1/product/13860416", HttpMethod.PUT,
+    ResponseEntity<Map> result = this.restTemplate.exchange("http://localhost:$port/v1/products/13860416", HttpMethod.PUT,
       getRequestEntity(productPrice), Map.class)
 
     then:
@@ -79,12 +79,12 @@ class ProductServiceITSpec extends Specification {
       new Product.Price(value: 2000.99, currencyCode: Currency.getInstance(Locale.getDefault()).getCurrencyCode()))
 
     when:
-    ResponseEntity<Map> result = this.restTemplate.exchange("http://localhost:$port/v1/product/13860416", HttpMethod.PUT,
+    ResponseEntity<Map> result = this.restTemplate.exchange("http://localhost:$port/v1/products/13860416", HttpMethod.PUT,
       getRequestEntity(productPrice), Map.class)
 
     then:
     result.statusCode == HttpStatus.BAD_REQUEST
-    result.body.errorCode == 'MISMATCHED_ID'
+    result.body.errorCode == 'Mismatched Id'
     result.body.errorMessage == 'Id given in request does not match with the one given in the url'
 
   }
@@ -96,7 +96,7 @@ class ProductServiceITSpec extends Specification {
       new Product.Price(value : 2000.99, currencyCode : currencyCode))
 
     when:
-    ResponseEntity<Map> result = this.restTemplate.exchange("http://localhost:$port/v1/product/13860415", HttpMethod.PUT,
+    ResponseEntity<Map> result = this.restTemplate.exchange("http://localhost:$port/v1/products/13860415", HttpMethod.PUT,
       getRequestEntity(productPrice), Map.class)
 
     then:
@@ -120,7 +120,7 @@ class ProductServiceITSpec extends Specification {
     Product productPrice = new Product(productId: 13860415, currentPrice: currentPrice)
 
     when:
-    ResponseEntity<Map> result = this.restTemplate.exchange("http://localhost:$port/v1/product/13860415", HttpMethod.PUT,
+    ResponseEntity<Map> result = this.restTemplate.exchange("http://localhost:$port/v1/products/13860415", HttpMethod.PUT,
       getRequestEntity(productPrice), Map.class)
 
     then:
@@ -139,7 +139,7 @@ class ProductServiceITSpec extends Specification {
 
   def 'authentication failure when wrong token is passed'() {
     when:
-    ResponseEntity<Product> responseEntity = this.restTemplate.exchange("http://localhost:$port/v1/product/13860428", HttpMethod.GET,
+    ResponseEntity<Product> responseEntity = this.restTemplate.exchange("http://localhost:$port/v1/products/13860428", HttpMethod.GET,
       getRequestEntity(null, 'XYZ'), Product.class)
 
     then:

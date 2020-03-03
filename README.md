@@ -103,6 +103,18 @@ https://documenter.getpostman.com/view/10570651/SzKZtcFi
 }
 ```
 
+## Metrics
+
+Different application metrics are collected using DropWizard Metrics. 
+Using ```jconsole``` command, Java Monitoring & Management console can be opened 
+and ProductService app should be selected and connect to view the metrics under MBeans tab.
+
+* fetchProduct - Metric to denote the number of successful calls happened to getProduct endpoint.
+* updateProduct - Metric to denote the number of successful price updates happened
+* getProduct - Metric to denote the time taken to call the RedSky api and database 
+              to fetch the product data.
+               
+
 ## Security Implementation
 
 * Token Based Security has been implemented using Spring Security

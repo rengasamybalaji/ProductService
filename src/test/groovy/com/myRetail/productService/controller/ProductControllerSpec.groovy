@@ -41,7 +41,7 @@ class ProductControllerSpec extends Specification {
       currentPrice: new Product.Price(value: 2.99, currencyCode: 'USD'))
 
     when:
-    def results  = mockMvc.perform(MockMvcRequestBuilders.get('/v1/product/12345'))
+    def results  = mockMvc.perform(MockMvcRequestBuilders.get('/v1/products/12345'))
 
     then:
     1 * productService.getProduct(12345) >> product
@@ -57,7 +57,7 @@ class ProductControllerSpec extends Specification {
 
   def 'bad request for an invalid product id'() {
     expect:
-    mockMvc.perform(MockMvcRequestBuilders.get('/v1/product/abc'))
+    mockMvc.perform(MockMvcRequestBuilders.get('/v1/products/abc'))
       .andExpect(MockMvcResultMatchers.status().isBadRequest())
   }
 
@@ -66,7 +66,7 @@ class ProductControllerSpec extends Specification {
     Product product = new Product(productId: 12345, currentPrice: new Product.Price(value: 2.99, currencyCode: 'USD'))
 
     when:
-    def results  = mockMvc.perform(MockMvcRequestBuilders.put('/v1/product/12345').
+    def results  = mockMvc.perform(MockMvcRequestBuilders.put('/v1/products/12345').
       contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(),
         Charset.forName("utf8")))
       .content(new ObjectMapper().writeValueAsString(product)))
@@ -83,7 +83,7 @@ class ProductControllerSpec extends Specification {
     Product product = new Product(productId: 13860428, currentPrice: new Product.Price(value: 2.99, currencyCode: 'USD'))
 
     when:
-    mockMvc.perform(MockMvcRequestBuilders.put('/v1/product/13860429').
+    mockMvc.perform(MockMvcRequestBuilders.put('/v1/products/13860429').
       contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(),
         Charset.forName("utf8")))
       .content(new ObjectMapper().writeValueAsString(product)))

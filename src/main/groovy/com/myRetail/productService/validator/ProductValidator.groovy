@@ -58,8 +58,8 @@ class ProductValidator implements Validator {
   boolean isValidProductMatch(Product productJSON, long productId) {
     if (productId != productJSON.productId) {
       log.warn('Product Id given in request does not match with the one given in the url')
-      throw new InvalidInputException(errorCode: 'MISMATCHED_ID', errorMessage: 'Id given in request ' +
-        'does not match with the one given in the url')
+      throw new InvalidInputException(errorCode: ProductConstants.MISMATCHED_ID_ERROR_CODE, errorMessage:
+      ProductConstants.MISMATCHED_ID_ERROR_DESCRIPTION)
     }
     return true
   }
