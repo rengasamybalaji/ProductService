@@ -10,6 +10,10 @@ import javax.servlet.ServletException
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
+/**
+ * Class to handle login failures
+ */
+
 class LoginFailureHandler implements AuthenticationFailureHandler  {
   @Override
   void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {

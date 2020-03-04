@@ -3,6 +3,9 @@ package com.myRetail.productService.auth.service
 import com.myRetail.productService.auth.dto.User
 import org.springframework.stereotype.Service
 
+/**
+ * Service to handle authentication
+ */
 @Service
 class UserAuthenticationService {
 

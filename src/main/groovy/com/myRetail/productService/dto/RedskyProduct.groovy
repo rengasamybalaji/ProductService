@@ -2,6 +2,9 @@ package com.myRetail.productService.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
+/**
+ * RedSky domain DTO object
+ */
 class RedskyProduct {
 
   Product product

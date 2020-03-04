@@ -1,5 +1,8 @@
 package com.myRetail.productService.constants
 
+/**
+ * Constant class
+ */
 class ProductConstants {
 
   public static final String MISSING_PRODUCT_PRICE_ERROR_CODE        = "Missing Product Price Info"
@@ -12,4 +15,7 @@ class ProductConstants {
   public static final String INVALID_CURRENCY_ERROR_DESCRIPTION      = "The given Currency Code is not valid"
   public static final String MISMATCHED_ID_ERROR_CODE                = "Mismatched Id"
   public static final String MISMATCHED_ID_ERROR_DESCRIPTION         = "Id given in request does not match with the one given in the url"
+  public static final String EXTERNAL_ERROR_CODE                     = "External Error"
+  public static final String EXTERNAL_ERROR_DESCRIPTION              = "RedSky API Not Reachable"
+  public static final String INTERNAL_ERROR_CODE                     = "Internal Error"
 }

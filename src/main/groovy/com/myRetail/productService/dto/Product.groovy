@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 import javax.validation.constraints.DecimalMin
 
+/**
+ * Product DTO object
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 class Product {

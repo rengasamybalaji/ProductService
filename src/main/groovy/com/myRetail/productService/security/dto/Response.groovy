@@ -7,6 +7,10 @@ import groovy.util.logging.Slf4j
 
 import javax.servlet.http.HttpServletResponse
 
+/**
+ * Response DTO to hold the response
+ */
+
 @Slf4j
 class Response {
   public static final String STATUS_FAILURE = "failure"

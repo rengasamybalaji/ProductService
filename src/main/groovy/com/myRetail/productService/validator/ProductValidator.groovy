@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component
 import org.springframework.validation.Errors
 import org.springframework.validation.Validator
 
+/**
+ * Validator to handle custom validation.
+ */
+
 @Component
 @Slf4j
 class ProductValidator implements Validator {

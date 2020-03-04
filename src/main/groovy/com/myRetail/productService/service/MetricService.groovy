@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component
 
 import java.util.concurrent.TimeUnit
 
+/**
+ * Service class to record metrics
+ */
+
 @Component
 @Slf4j
 class MetricService {
@@ -19,5 +23,10 @@ class MetricService {
 
   void recordTimer(String name, long duration, TimeUnit unit = TimeUnit.MILLISECONDS) {
     metricRegistry.timer(name).update(duration, unit)
+  }
+
+  void recordErrorCountAndLogging(String action, String message, long n = 1) {
+    metricRegistry.counter(action + "_error").inc(n)
+    log.error("action=${action}, error=${message}")
   }
 }

@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController
 
 import javax.validation.Valid
 
+/**
+ * RestController to hold product endpoints
+ */
 @RestController
 @RequestMapping('/v1/products')
 @Slf4j

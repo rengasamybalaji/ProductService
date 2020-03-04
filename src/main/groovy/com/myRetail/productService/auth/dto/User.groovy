@@ -3,6 +3,9 @@ package com.myRetail.productService.auth.dto
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
+/**
+ * DTO object to hold user
+ */
 class User implements UserDetails {
 
   String id

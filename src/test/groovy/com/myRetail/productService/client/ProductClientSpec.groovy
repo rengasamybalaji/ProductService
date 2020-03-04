@@ -2,6 +2,7 @@ package com.myRetail.productService.client
 
 import com.myRetail.productService.dto.RedskyProduct
 import com.myRetail.productService.exception.NotFoundException
+import com.myRetail.productService.service.MetricService
 import org.springframework.http.HttpStatus
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.client.RestTemplate
@@ -13,8 +14,10 @@ class ProductClientSpec extends Specification {
 
   RestTemplate mockRestTemplate = Mock(RestTemplate)
 
+  MetricService mockMetricService = Mock(MetricService)
+
   void setup() {
-    productClient = new ProductClient(restTemplate: mockRestTemplate)
+    productClient = new ProductClient(restTemplate: mockRestTemplate, metricService: mockMetricService)
   }
 
   def 'successfully retrieves the product info from redSky'() {
@@ -36,6 +39,7 @@ class ProductClientSpec extends Specification {
     then:
     1 * mockRestTemplate.getForObject(_ as String, RedskyProduct.class) >>
       { throw new HttpClientErrorException(HttpStatus.NOT_FOUND, '404') }
+    1 * mockMetricService.recordErrorCountAndLogging(_ as String, _ as String)
     thrown NotFoundException
   }
 }

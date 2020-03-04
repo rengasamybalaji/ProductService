@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service
 
 import java.util.concurrent.CompletableFuture
 
+/**
+ * Service class to handle product business functionality
+ */
 @Service
 @Slf4j
 class ProductService {
@@ -34,6 +37,12 @@ class ProductService {
     CompletableFuture<ProductPriceEntity> dbFuture = CompletableFuture.supplyAsync {
       Optional<ProductPriceEntity> optionalProductPriceEntity = productPriceRepository.findById(productId)
       return optionalProductPriceEntity.orElse(null)
+      }.handle { productPriceEntity, ex ->
+      if (ex) {
+        metricService.recordErrorCountAndLogging('DB price fetch failed', ex.message)
+        return null
+      }
+      return productPriceEntity
       }
 
     CompletableFuture<Product> combinedFuture = redSkyFuture.thenCombine(dbFuture)

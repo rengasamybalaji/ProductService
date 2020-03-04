@@ -8,9 +8,9 @@ from embedded MongoDB.
 
 * Groovy
 * Spring Boot, Spring Security, Spring Web, Spring Data
-* Swagger
 * slf4j
 * Spock, Mockito
+* WireMock
 * Sonar JaCoCo
 * Maven
 * Embedded Mongo DB
@@ -83,10 +83,6 @@ curl -X PUT -H 'Authorization: Bearer <<<TokenReceived From Login Response>>>' -
 Sample Product Ids: 13860416, 13860418, 13860420, 13860421, 13860424, 13860425
 ```
 
-## Swagger API reference
-```
-http://localhost:8080/swagger-ui.html
-```
 ## Postman Document reference for sample request and response
 ```
 https://documenter.getpostman.com/view/10570651/SzKZtcFi
@@ -114,6 +110,9 @@ and ProductService app should be selected and connect to view the metrics under 
 * updateProduct - Metric to denote the number of successful price updates happened
 * getProduct - Metric to denote the time taken to call the RedSky api and database 
               to fetch the product data.
+* Redsky API Failure - Error metric to denote the number of errors when accessing RedSky API               
+* DB price fetch failed - Error metric to denote the number of errors occurred while 
+fetching price from DB              
                
 
 ## Security Implementation
