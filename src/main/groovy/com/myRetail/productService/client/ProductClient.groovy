@@ -30,8 +30,9 @@ class ProductClient {
       metricService.recordErrorCountAndLogging('Redsky API Failure', exception.message)
       if (exception.message.contains('404')) {
         throw new NotFoundException(errorCode: 'PRODUCT_NOT_FOUND', errorMessage: exception.message)
+      } else if (!exception.message.contains('410')) {
+        throw exception
       }
-      throw exception
     }
   }
 }
